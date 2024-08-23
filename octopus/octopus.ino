@@ -5,14 +5,7 @@
 #define BRIGHTNESS 100
 #define HEAD_LEG_CROSSOVER 25
 
-CRGB arm1[LEG_NUM_LEDS];
-CRGB arm2[LEG_NUM_LEDS];
-CRGB arm3[LEG_NUM_LEDS];
-CRGB arm4[LEG_NUM_LEDS];
-CRGB arm5[LEG_NUM_LEDS];
-CRGB arm6[LEG_NUM_LEDS];
-CRGB arm7[LEG_NUM_LEDS];
-CRGB arm8[LEG_NUM_LEDS];
+CRGB arm[LEG_NUM_LEDS];
 CRGB head[HEAD_NUM_LEDS];
 
 // Parameters for the wave pattern
@@ -21,14 +14,14 @@ float waveFrequency = 0.2; // Frequency of the wave
 float time = 0;  // Time variable for animation
 
 void setup() {
-  FastLED.addLeds<NEOPIXEL, 1>(arm1, LEG_NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, 2>(arm2, LEG_NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, 3>(arm3, LEG_NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, 4>(arm4, LEG_NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, 5>(arm5, LEG_NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, 6>(arm6, LEG_NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, 7>(arm7, LEG_NUM_LEDS);
-  FastLED.addLeds<NEOPIXEL, 8>(arm8, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 1>(arm, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 2>(arm, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 3>(arm, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 4>(arm, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 5>(arm, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 6>(arm, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 7>(arm, LEG_NUM_LEDS);
+  FastLED.addLeds<NEOPIXEL, 8>(arm, LEG_NUM_LEDS);
   FastLED.addLeds<NEOPIXEL, 9>(head, HEAD_NUM_LEDS);
 }
 
@@ -91,14 +84,7 @@ void setLed(int led, CHSV color) {
   } else if (led < HEAD_LEG_CROSSOVER) {
     head[map(led, 1, HEAD_LEG_CROSSOVER, 22, 0)] = color;
   } else {
-    arm1[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
-    arm2[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
-    arm3[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
-    arm4[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
-    arm5[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
-    arm6[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
-    arm7[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
-    arm8[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
+    arm[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)] = color;
   }
 }
 
@@ -108,13 +94,6 @@ void fadeToBlackBy(int led, float amount) {
   } else if (led < HEAD_LEG_CROSSOVER) {
     head[map(led, 1, HEAD_LEG_CROSSOVER, 22, 0)].fadeToBlackBy(amount);
   } else {
-    arm1[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
-    arm2[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
-    arm3[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
-    arm4[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
-    arm5[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
-    arm6[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
-    arm7[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
-    arm8[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
+    arm[map(led, HEAD_LEG_CROSSOVER, VIRTUAL_NUM_LEDS, 0, LEG_NUM_LEDS)].fadeToBlackBy(amount);
   }
 }
